@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public partial class PlayerController : MonoBehaviour
+public partial class CharacterController3D : MonoBehaviour
 {
     [Header("Player Movement Properties")]
     [SerializeField] private float speed;
