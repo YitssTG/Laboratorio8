@@ -1,19 +1,24 @@
+using Unity.VisualScripting.InputSystem;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+
 public class ColorPanel : MonoBehaviour
 {
-    //[SerializeField] private Image colorImage;
-    //void OnEnable()
-    //{
-    //    ColorObject.OnChangeColor += UpdateColor;
-    //}
-    //void OnDisable()
-    //{
-    //    ColorObject.OnChangeColor -= UpdateColor;
-    //}
-
-    //private void UpdateColor(Color newColor)
-    //{
-    //    colorImage.tintColor = newColor;
-    //}
+    private Image imageColor;
+    void Awake()
+    {
+        imageColor = GetComponent<Image>();
+    }
+    void OnEnable()
+    {
+        ColorObject.OnChangeColor += ChangeColor;
+    }
+    void OnDisable()
+    {
+        ColorObject.OnChangeColor -= ChangeColor;
+    }
+    public void ChangeColor(Color color)
+    {
+        imageColor.color = color;
+    }
 }

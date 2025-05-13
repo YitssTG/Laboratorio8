@@ -3,14 +3,30 @@ using UnityEngine;
 
 public class ColorObject : MonoBehaviour
 {
-    public static event Action<Color> OnChangeColor;
-    public ColorShapeData colorData;
+    [SerializeField] private ColorShapeData dataColor;
 
-    void OnTriggerEnter2D(Collider2D other)
+     private SpriteRenderer _spriteRenderer;
+    public static event Action<Color> OnChangeColor;
+    private void Awake()
     {
-        if (other.CompareTag("Player") && colorData != null)
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    void Start()
+    {
+        ControllShapeColor();
+    }
+    void OnTriggerEnter2D(Collider2D other)
+     {
+        if (other.CompareTag("Player"))
         {
-            OnChangeColor?.Invoke(colorData.color);
+            OnChangeColor?.Invoke(_spriteRenderer.color);
         }
     }
+    public void ControllShapeColor()
+    {
+        _spriteRenderer.color = dataColor.Color;
+        _spriteRenderer.sprite = _spriteRenderer.sprite;
+    }
+
+
 }

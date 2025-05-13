@@ -2,30 +2,40 @@ using UnityEngine;
 
 public class PlayerColorShapeController : MonoBehaviour
 {
-    [SerializeField] private ColorShapeData playerData;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
 
+    [SerializeField] private ColorShapeData dataCharacter;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent <SpriteRenderer>();
+    }
+    void Start()
+    {
+        ControllShapeColor();
+    }
+    public void ControllShapeColor()
+    {
+        _spriteRenderer.color =  dataCharacter.Color;
+        _spriteRenderer.sprite = dataCharacter.Sprite;
+    }
+    public void ChangeShape(Sprite sprite)
+    {
+        _spriteRenderer.sprite = sprite;
+    }
+    public void ChangeColor(Color color)
+    {
+        _spriteRenderer.color = color ;
+    }
     void OnEnable()
     {
-        ColorObject.OnChangeColor += UpdateColor;
-        ShapeObject.OnChangeShape += UpdateShape;
-    }
+        ShapeObjects.OnChangeShape += ChangeShape;
 
+        ColorObject.OnChangeColor += ChangeColor;
+    }
     void OnDisable()
     {
-        ColorObject.OnChangeColor -= UpdateColor;
-        ShapeObject.OnChangeShape -= UpdateShape;
-    }
-
-    private void UpdateColor(Color newColor)
-    {
-        spriteRenderer.color = newColor;
-        playerData.color = newColor;
-    }
-
-    private void UpdateShape(Sprite newSprite)
-    {
-        spriteRenderer.sprite = newSprite;
-        playerData.shape = newSprite;
+        ShapeObjects.OnChangeShape -= ChangeShape;
+        ColorObject.OnChangeColor -= ChangeColor;
     }
 }

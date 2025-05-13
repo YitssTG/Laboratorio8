@@ -1,16 +1,27 @@
 using System;
 using UnityEngine;
 
-public class ShapeObject : MonoBehaviour
+public class ShapeObjects : MonoBehaviour
 {
-    public static event Action<Sprite> OnChangeShape;
-    public ColorShapeData shapeData;
+    private SpriteRenderer _spriteRenderer;
 
-    void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] private ColorShapeData dataShape;
+    public static event Action<Sprite> OnChangeShape;
+    private void Awake()
     {
-        if (other.CompareTag("Player") && shapeData != null)
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
         {
-            OnChangeShape?.Invoke(shapeData.shape);
+            OnChangeShape?.Invoke(_spriteRenderer.sprite);
         }
     }
+    public void ControllShapeColor()
+    {
+        _spriteRenderer.color = dataShape.Color;
+        _spriteRenderer.sprite = dataShape.Sprite;
+    }
+
 }
