@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Shape
   - Color
+  - Enemy1
+  - Enemy2
+  - Moneda
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - Water
   - UI
   - Game
-  - 
-  - 
+  - Player
+  - Ground
   - 
   - 
   - 
