@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 19508017}
   - component: {fileID: 19508019}
   - component: {fileID: 19508018}
+  - component: {fileID: 19508020}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -257,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19508016}
   m_CullTransparentMesh: 1
+--- !u!114 &19508020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19508016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33fbfd718455c3641b56e19e68c8c1f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: {fileID: 19508018}
 --- !u!1 &66591384
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +283,7 @@ GameObject:
   - component: {fileID: 66591388}
   - component: {fileID: 66591387}
   - component: {fileID: 66591386}
+  - component: {fileID: 66591389}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Moneda
@@ -306,7 +321,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -367,6 +382,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66591384}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &66591389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66591384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8566c934d7246ae4ca799fce0fb21254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &129184848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1100,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441966152}
   m_CullTransparentMesh: 1
+--- !u!1 &466615532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 466615534}
+  - component: {fileID: 466615533}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &466615533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466615532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf202c36cd7e5e74192d2297d3bfa849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLife: 10
+  PlayerCoins: 0
+--- !u!4 &466615534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466615532}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.80357176, y: -0.42092034, z: -3.701459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482435845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,6 +1290,7 @@ GameObject:
   - component: {fileID: 513354981}
   - component: {fileID: 513354983}
   - component: {fileID: 513354982}
+  - component: {fileID: 513354984}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1343,6 +1418,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513354980}
   m_CullTransparentMesh: 1
+--- !u!114 &513354984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513354980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db09f29d338af4342b91c41bf0e11c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coins: {fileID: 513354982}
 --- !u!1 &530980128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1520,7 @@ GameObject:
   - component: {fileID: 572035401}
   - component: {fileID: 572035400}
   - component: {fileID: 572035399}
+  - component: {fileID: 572035402}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Moneda
@@ -1469,7 +1558,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1530,6 +1619,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572035397}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &572035402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572035397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8566c934d7246ae4ca799fce0fb21254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &574634075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,9 +1900,10 @@ GameObject:
   - component: {fileID: 741011082}
   - component: {fileID: 741011081}
   - component: {fileID: 741011080}
+  - component: {fileID: 741011083}
   m_Layer: 0
   m_Name: Corazon
-  m_TagString: Untagged
+  m_TagString: Corazon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1835,7 +1938,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1894,6 +1997,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741011078}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &741011083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741011078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35738340a8e4f2942927a495b0ec1b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LifeRecover: 1
 --- !u!1 &760504276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +2882,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2d25acad-9203-4de8-82cd-8ba6c66d0329
     m_ActionName: 'Game2/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 477e510e-de7e-40ff-8676-87b447943abb
+    m_ActionName: 'Game2/PreviusColor[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62e526e1-e754-4af3-ae19-41f9c7099e43
+    m_ActionName: 'Game2/NextColor[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game2
@@ -3832,3 +3956,4 @@ SceneRoots:
   - {fileID: 2125259757}
   - {fileID: 243445091}
   - {fileID: 661813777}
+  - {fileID: 466615534}

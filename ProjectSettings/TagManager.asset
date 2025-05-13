@@ -9,6 +9,7 @@ TagManager:
   - Enemy1
   - Enemy2
   - Moneda
+  - Corazon
   layers:
   - Default
   - TransparentFX
