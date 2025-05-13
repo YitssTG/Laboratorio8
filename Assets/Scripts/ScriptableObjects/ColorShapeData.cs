@@ -2,15 +2,8 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Color Shape Data", menuName = "Scriptable objects/Game 1/ColorShapeData")]
-public class ColorShapeData : MonoBehaviour
+public class ColorShapeData : ScriptableObject
 {
-    
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
+    public Color color = Color.white;
+    public Sprite shape;
 }

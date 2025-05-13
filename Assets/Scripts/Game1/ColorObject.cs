@@ -1,16 +1,16 @@
+using System;
 using UnityEngine;
 
 public class ColorObject : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public static event Action<Color> OnChangeColor;
+    public ColorShapeData colorData;
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player") && colorData != null)
+        {
+            OnChangeColor?.Invoke(colorData.color);
+        }
     }
 }

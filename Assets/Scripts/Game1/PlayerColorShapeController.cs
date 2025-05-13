@@ -2,15 +2,30 @@ using UnityEngine;
 
 public class PlayerColorShapeController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private ColorShapeData playerData;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    void OnEnable()
     {
-        
+        ColorObject.OnChangeColor += UpdateColor;
+        ShapeObject.OnChangeShape += UpdateShape;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        
+        ColorObject.OnChangeColor -= UpdateColor;
+        ShapeObject.OnChangeShape -= UpdateShape;
+    }
+
+    private void UpdateColor(Color newColor)
+    {
+        spriteRenderer.color = newColor;
+        playerData.color = newColor;
+    }
+
+    private void UpdateShape(Sprite newSprite)
+    {
+        spriteRenderer.sprite = newSprite;
+        playerData.shape = newSprite;
     }
 }
