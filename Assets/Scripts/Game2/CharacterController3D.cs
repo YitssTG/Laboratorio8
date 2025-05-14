@@ -57,4 +57,11 @@ public partial class CharacterController3D : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * jumoForce, ForceMode.Impulse);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("DoorFinal"))
+        {
+            GameManager.Instance.CheckWin();
+        }
+    }
 }
