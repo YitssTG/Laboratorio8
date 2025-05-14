@@ -1,16 +1,25 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private ColorData enemyColor;
+    [SerializeField] private int damage;
+    public static event Action<ColorData, int> OnEnter;
+    public static event Action OnExit;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            OnEnter?.Invoke(enemyColor, damage);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            OnExit?.Invoke();
+        }
     }
 }

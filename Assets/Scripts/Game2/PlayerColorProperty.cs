@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class PlayerColorProperty : MonoBehaviour
+public class PlayerColorProperty : ColorProperty
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
-        
+        ColorPowerUpManager.OnChangeColor += SetUpColor;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        ColorPowerUpManager.OnChangeColor -= SetUpColor;
     }
 }

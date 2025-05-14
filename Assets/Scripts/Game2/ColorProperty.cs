@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class ColorProperty : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] protected ColorData colorData;
+    protected MeshRenderer meshRenderer;
+    [SerializeField] protected Material material;
+    private void Awake()
     {
-        
+        meshRenderer = GetComponent<MeshRenderer>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        SetUpColor(colorData);
+    }
+    protected void SetUpColor(ColorData newColor)
+    {
+        material.color = newColor.color;
+        meshRenderer.material = material;
     }
 }
