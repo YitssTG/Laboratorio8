@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class ColorProperty : MonoBehaviour
 {
-    [SerializeField] protected ColorData colorData;
+    [SerializeField] protected ColorData _colorData;
     protected MeshRenderer meshRenderer;
-    [SerializeField] protected Material material;
+
+    [SerializeField] protected Material _material;
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
     }
     private void Start()
     {
-        SetUpColor(colorData);
+        SetUpColor(_colorData);
     }
     protected void SetUpColor(ColorData newColor)
     {
-        material.color = newColor.color;
-        meshRenderer.material = material;
+        _material.color = newColor.color;
+        meshRenderer.material = _material;
     }
 }

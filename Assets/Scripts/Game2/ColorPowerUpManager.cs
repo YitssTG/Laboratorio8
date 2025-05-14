@@ -3,23 +3,17 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class ColorPowerUpManager : MonoBehaviour
 {
-    [SerializeField] private ColorData[] colors;
-    [SerializeField] private ColorData currentColor;
+    [SerializeField] private ColorData[] _arrayColors;
+    [SerializeField] private ColorData _currentColor;
+
     [SerializeField] private bool canChangeColor;
+
     public static event Action<ColorData> OnChangeColor;
     public int currentcolor;
-    private void OnEnable()
-    {
-        Enemy.OnEnter += ValdateCollision;
-        Enemy.OnExit += ReturnToNormal;
-    }
-    private void OnDisable()
-    {
-        Enemy.OnEnter -= ValdateCollision;
-        Enemy.OnExit -= ReturnToNormal;
-    }
+
     public void OnPreviusColor(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -28,14 +22,14 @@ public class ColorPowerUpManager : MonoBehaviour
             {
                 if (currentcolor <= 0)
                 {
-                    currentcolor = colors.Length - 1;
+                    currentcolor = _arrayColors.Length - 1;
                 }
                 else
                 {
                     currentcolor--;
                 }
-                ChangeColorSelection();
-                OnChangeColor?.Invoke(currentColor);
+                ChangeColor();
+                OnChangeColor?.Invoke(_currentColor);
             }
         }
     }
@@ -45,39 +39,46 @@ public class ColorPowerUpManager : MonoBehaviour
         {
             if (canChangeColor)
             {
-                if (currentcolor >= colors.Length - 1)
+                if (currentcolor >= _arrayColors.Length - 1)
                 {
                     currentcolor = 0;
-                }
-                else
+                } else
                 {
                     currentcolor++;
                 }
-                ChangeColorSelection();
-                OnChangeColor?.Invoke(currentColor);
+                ChangeColor();
+                OnChangeColor?.Invoke(_currentColor);
             }
         }
-
     }
-    public void ChangeColorSelection()
+    public void ChangeColor()
     {
-        currentColor = colors[currentcolor];
+        _currentColor = _arrayColors[currentcolor];
     }
     private void ValdateCollision(ColorData otherColor, int damage)
     {
         canChangeColor = false;
-        if (otherColor.color != currentColor.color)
+        if (otherColor.color != _currentColor.color)
         {
             GameManager.Instance.ModifyLife(damage);
-        }
-        else
+        }else
         {
-            Debug.Log("color");
+            Debug.Log("Colisiona con un color... no pasa nada :c");
         }
     }
-    private void ReturnToNormal()
+    private void ResetNormal()
     {
         canChangeColor = true;
 
+    }
+    private void OnEnable()
+    {
+        Enemy.OnEnter += ValdateCollision;
+        Enemy.OnExit += ResetNormal;
+    }
+    private void OnDisable()
+    {
+        Enemy.OnEnter -= ValdateCollision;
+        Enemy.OnExit -= ResetNormal;
     }
 }

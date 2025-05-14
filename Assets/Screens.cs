@@ -4,28 +4,28 @@ using UnityEngine.UI;
 
 public class Screens : MonoBehaviour
 {
-    [SerializeField] Image GameWin;
-    [SerializeField] Image GameLoose;
+    [SerializeField] Image scrrenWin;
+    [SerializeField] Image scrrenLose;
 
     private void OnEnable()
     {
-        GameManager.OnWin += IfWin;
-        GameManager.OnLoose += IfLoose;
+        GameManager.OnWin += OnWin;
+        GameManager.OnLoose += OnLose;
     }
     private void OnDisable()
     {
-        GameManager.OnWin -= IfWin;
-        GameManager.OnLoose -= IfLoose;
+        GameManager.OnWin -= OnWin;
+        GameManager.OnLoose -= OnLose;
 
     }
-    public void IfWin()
+    public void OnWin()
     {
         Time.timeScale = 0f;
-        GameWin.gameObject.SetActive(true);
+        scrrenWin.gameObject.SetActive(true);
     }
-    public void IfLoose()
+    public void OnLose()
     {
         Time.timeScale = 0f;
-        GameLoose.gameObject.SetActive(true);
+        scrrenLose.gameObject.SetActive(true);
     }
 }
